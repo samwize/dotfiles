@@ -1,4 +1,14 @@
-# Mathias’s dotfiles
+# Junda's dotfiles (forked from Mathias’s)
+
+## Junda's Changes
+
+### .osx
+
+- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll,
+
+### .aliases
+
+- Added `ws` for ~/Workspace
 
 ## Installation
 
