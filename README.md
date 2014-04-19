@@ -4,11 +4,65 @@
 
 ### .osx
 
-- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll,
+- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
+
 
 ### .aliases
 
 - Added `ws` for ~/Workspace
+
+
+### .cask and Brewfile
+
+- Disabled apps and brew install which I don't always use
+
+
+## Junda's Instructions for setting up a new computer
+
+1. Install brew
+
+```bash
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+```
+
+2. Install git
+
+```bash
+brew install git
+```
+
+3. Download dotfiles
+
+```bash
+cd ~
+git clone https://github.com/samwize/dotfiles && cd dotfiles
+```
+
+4. Auto setup with dotfiles
+
+Inspect these files first: {path,bash_prompt,exports,aliases,functions,extra} - it's your responsibility! Once confirm run:
+
+```bash
+source bootstrap.sh
+```bash
+
+
+5. Run these too
+
+```bash
+# Sensible OS X defaults
+./.osx
+# Install more brew stuff
+brew bundle ~/Brewfile
+# Install apps
+cask
+```
+
+Done! Enjoy your new computer, that feels like old!
+
+Mathias’s original README beyond this point.
+
+---
 
 ## Installation
 
