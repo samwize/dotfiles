@@ -1,23 +1,6 @@
 # Junda's dotfiles (forked from Mathias’s)
 
-## Junda's Changes
-
-### .osx
-
-- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
-
-
-### .aliases
-
-- Added `ws` for ~/Workspace
-
-
-### .cask and Brewfile
-
-- Disabled apps and brew install which I don't always use
-
-
-## Junda's Instructions for setting up a new computer
+## Junda's Instructions for a new computer
 
 #### 1. Install brew
 
@@ -55,7 +38,7 @@ source bootstrap.sh
 # Install more brew stuff
 brew bundle ~/Brewfile
 # Install apps
-cask
+./.cask
 ```
 
 #### 6. Oh-my-zsh
@@ -71,13 +54,33 @@ chsh -s /bin/zsh
 
 Done! Enjoy your new computer, that feels like old!
 
+
+
+
+
+
+## Junda's Changes
+
+### .osx
+
+- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
+
+
+### .aliases
+
+- Added `ws` for ~/Workspace
+
+
+### .cask and Brewfile
+
+- Disabled apps and brew install which I don't always use
+
+
+
+
+
+
 Mathias’s original README beyond this point.
-
-
-
-
-
-
 
 ---
 
