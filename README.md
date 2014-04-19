@@ -19,35 +19,35 @@
 
 ## Junda's Instructions for setting up a new computer
 
-1. Install brew
+#### 1. Install brew
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
 
-2. Install git
+#### 2. Install git
 
 ```bash
 brew install git
 ```
 
-3. Download dotfiles
+#### 3. Download dotfiles
 
 ```bash
 cd ~
 git clone https://github.com/samwize/dotfiles && cd dotfiles
 ```
 
-4. Auto setup with dotfiles
+#### 4. Auto setup with dotfiles
 
 Inspect these files first: {path,bash_prompt,exports,aliases,functions,extra} - it's your responsibility! Once confirm run:
 
 ```bash
 source bootstrap.sh
-```bash
+```
 
 
-5. Run these too
+#### 5. Run these too
 
 ```bash
 # Sensible OS X defaults
@@ -58,7 +58,7 @@ brew bundle ~/Brewfile
 cask
 ```
 
-6. Oh-my-zsh
+#### 6. Oh-my-zsh
 
 Setup [samwize's oh-my-zsh](https://github.com/samwize/oh-my-zsh).
 
