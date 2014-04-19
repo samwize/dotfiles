@@ -58,9 +58,26 @@ brew bundle ~/Brewfile
 cask
 ```
 
+6. Oh-my-zsh
+
+Setup [samwize's oh-my-zsh](https://github.com/samwize/oh-my-zsh).
+
+```bash
+git clone git://github.com/samwize/oh-my-zsh.git ~/.oh-my-zsh
+cd ~
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+chsh -s /bin/zsh
+```
+
 Done! Enjoy your new computer, that feels like old!
 
 Mathias’s original README beyond this point.
+
+
+
+
+
+
 
 ---
 
