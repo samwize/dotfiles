@@ -154,4 +154,4 @@ alias reload="exec $SHELL -l"
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"
 
 # For using iTunes Transporter anywhere
-alias iTMSTransporter='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'
+alias itms='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'
