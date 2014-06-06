@@ -11,11 +11,11 @@ installcask sublime-text
 installcask transmission
 installcask vlc
 installcask google-chrome
+installcask iterm2
 
 # installcask google-chrome-canary
 # installcask imagealpha
 # installcask imageoptim
-# installcask iterm2
 # installcask macvim
 # installcask miro-video-converter
 # installcask the-unarchiver
