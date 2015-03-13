@@ -35,10 +35,9 @@ source bootstrap.sh
 ```bash
 # Sensible OS X defaults
 ./.osx
+
 # Install more brew stuff
-brew bundle ~/Brewfile
-# Install apps
-./.cask
+./brew.sh
 ```
 
 #### 6. Oh-my-zsh
@@ -71,9 +70,9 @@ Done! Enjoy your new computer, that feels like old!
 - Added `ws` for ~/Workspace
 
 
-### .cask and Brewfile
+### Brew.sh
 
-- Disabled apps and brew install which I don't always use
+- Disable brew install which I don't always use
 
 
 
