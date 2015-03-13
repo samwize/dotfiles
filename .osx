@@ -340,6 +340,10 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
+# JD: Change Finder column width
+/usr/libexec/PlistBuddy -c "Delete :StandardViewOptions:ColumnViewOptions:ColumnWidth" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Add :StandardViewOptions:ColumnViewOptions:ColumnWidth integer 160" ~/Library/Preferences/com.apple.finder.plist
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
