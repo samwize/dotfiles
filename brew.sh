@@ -95,19 +95,25 @@ brew install wget --with-iri
 # brew install webkit2png
 # brew install zopfli
 
-# JD: Install Core Apps
-echo "Install Junda's Core Apps"
+# Install cask
+brew install caskroom/cask/brew-cask
+
+# JD: Install my apps
+echo "Install Junda's Dev Apps"
 brew cask install --appdir="~/Applications" iterm2
 brew cask install --appdir="/Applications" sublime-text
 brew cask install --appdir="/Applications" sourcetree
 
 echo "Install Junda's Productivity Apps"
 brew cask install --appdir="/Applications" skype
+brew cask install --appdir="~/Applications" slack
 brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="~/Applications" transmit
 brew cask install --appdir="~/Applications" vlc
 brew cask install --appdir="~/Applications" google-chrome
+
+brew cask install lastpass
 
 # Remove outdated versions from the cellar.
 brew cleanup
