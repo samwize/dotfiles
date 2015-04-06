@@ -95,6 +95,12 @@ brew install wget --with-iri
 # brew install webkit2png
 # brew install zopfli
 
+
+# JD: brew install
+echo "Brew Installing"
+brew install node
+
+
 # Install cask
 brew install caskroom/cask/brew-cask
 
