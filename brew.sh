@@ -107,6 +107,7 @@ brew cask install --appdir="/Applications" sourcetree
 echo "Install Junda's Productivity Apps"
 brew cask install --appdir="/Applications" skype
 brew cask install --appdir="~/Applications" slack
+brew cask install --appdir="~/Applications" evernote
 brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="~/Applications" transmit
