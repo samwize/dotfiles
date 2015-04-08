@@ -109,6 +109,7 @@ echo "Install Junda's Dev Apps"
 brew cask install --appdir="~/Applications" iterm2
 brew cask install --appdir="/Applications" sublime-text
 brew cask install --appdir="/Applications" sourcetree
+brew cask install sketch
 
 echo "Install Junda's Productivity Apps"
 brew cask install --appdir="/Applications" skype
@@ -119,7 +120,6 @@ brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="~/Applications" transmit
 brew cask install --appdir="~/Applications" vlc
 brew cask install --appdir="~/Applications" google-chrome
-
 brew cask install lastpass
 
 # Remove outdated versions from the cellar.
