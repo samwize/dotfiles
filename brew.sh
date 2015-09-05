@@ -126,6 +126,7 @@ brew cask install --appdir="~/Applications" transmit
 brew cask install --appdir="~/Applications" vlc
 brew cask install --appdir="~/Applications" google-chrome
 brew cask install lastpass
+brew cask install transmission
 
 # Remove outdated versions from the cellar.
 brew cleanup
