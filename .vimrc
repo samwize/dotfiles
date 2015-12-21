@@ -1,3 +1,13 @@
+"JD: For vundle
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vim-colors-solarized
+call vundle#begin()
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
