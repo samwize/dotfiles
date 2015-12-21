@@ -1,10 +1,14 @@
 "JD: For vundle
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/vim-colors-solarized
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim' " Prevent PluginClean from deleting Vundle itself!
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown' " Doesn't render well
 call vundle#end()            " required
 filetype plugin indent on    " required
 
