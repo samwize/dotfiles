@@ -7,10 +7,30 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-endwise'
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown' " Doesn't render well
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set history=1000
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+set number      "show line numbers
+"default indent settings
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+set smartindent
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
 
 " Use the Solarized Dark theme
 set background=dark

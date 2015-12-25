@@ -142,3 +142,10 @@ alias reload="exec $SHELL -l"
 
 # JD: For using iTunes Transporter anywhere
 alias itms='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'
+
+# JD: For Bundler to load gems
+alias be="bundle exec"
+alias jks="bundle exec jekyll serve"
+alias newpost="bundle exec octopress new post"
+
+
