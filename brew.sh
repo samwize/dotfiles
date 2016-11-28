@@ -119,20 +119,21 @@ brew install caskroom/cask/brew-cask
 
 # JD: Install my apps
 echo "Install Junda's Dev Apps"
-brew cask install --appdir="~/Applications" iterm2
-brew cask install --appdir="/Applications" sublime-text
-brew cask install --appdir="/Applications" sourcetree
+brew cask install iterm2
+brew cask install atom
+brew cask install sublime-text
+brew cask install sourcetree
 brew cask install sketch
 
 echo "Install Junda's Productivity Apps"
-brew cask install --appdir="/Applications" skype
-brew cask install --appdir="~/Applications" slack
-brew cask install --appdir="~/Applications" evernote
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" dropbox
-brew cask install --appdir="~/Applications" transmit
-brew cask install --appdir="~/Applications" vlc
-brew cask install --appdir="~/Applications" google-chrome
+brew cask install skype
+brew cask install slack
+brew cask install evernote
+brew cask install spotify
+brew cask install dropbox
+brew cask install transmit
+brew cask install vlc
+brew cask install google-chrome
 brew cask install lastpass
 brew cask install transmission
 brew cask install spectacle
