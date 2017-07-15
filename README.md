@@ -63,6 +63,13 @@ My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, wh
 
 I have a preference for using [solarized](https://github.com/altercation/solarized) dark theme. In iTerm, you can change in Preferences > Profiles > Color > Color Presets
 
+#### Others
+
+```bash
+git config --global user.name YOUR_NAME
+git config --global user.email YOUR_EMAIL
+```
+
 ## Junda's Changes
 
 ### .osx

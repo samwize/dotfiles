@@ -180,3 +180,8 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
+[user]
+
+	name = Junda
+	email = junda@just2us.com
