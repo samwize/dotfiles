@@ -1,0 +1,4 @@
+#!/bin/sh
+### lolcommits hook (begin) ###
+LANG="" && PATH="/Users/junda/.rvm/rubies/ruby-2.3.4/bin:/usr/local/bin:$PATH" && if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --delay 3; fi
+###  lolcommits hook (end)  ###

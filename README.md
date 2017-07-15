@@ -1,5 +1,9 @@
 # My dotfiles (forked from Mathias’s)
 
+Dotfiles is great for setting up a new Mac.
+
+All files (except those listed in `bootstrap.sh`) in this repository will be copied to your home directory when you run `source bootstrap.sh`. So feel free to add any "dotfiles" to this repository, except your password.
+
 ## Instructions for a new computer
 
 #### 1. Install brew
@@ -39,6 +43,9 @@ source bootstrap.sh
 
 # Install more brew stuff, cask install apps, and other apps
 ./brew.sh
+
+# Install development apps, tools and setting them up
+./setup-dev.sh
 ```
 
 #### 6. Setup Oh-my-zsh
