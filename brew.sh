@@ -113,7 +113,6 @@ brew install wget --with-iri
 echo "Brew Installing"
 brew install node
 
-
 # Install cask
 brew install caskroom/cask/brew-cask
 
@@ -121,7 +120,7 @@ brew install caskroom/cask/brew-cask
 echo "Install Junda's Dev Apps"
 brew cask install iterm2
 brew cask install atom
-brew cask install sublime-text
+# brew cask install sublime-text
 brew cask install sourcetree
 brew cask install sketch
 
@@ -137,6 +136,11 @@ brew cask install google-chrome
 brew cask install lastpass
 brew cask install transmission
 brew cask install spectacle
+
+echo "Install Junda's Personal Apps"
+brew cask install whatsapp
+brew cask install adium
+brew install youtube-dl
 
 # Remove outdated versions from the cellar.
 brew cleanup
