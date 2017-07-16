@@ -38,14 +38,14 @@ source bootstrap.sh
 #### 5. Run these too
 
 ```bash
-# Sensible OS X defaults
-./.osx
-
 # Install more brew stuff, cask install apps, and other apps
 ./brew.sh
 
 # Install development apps, tools and setting them up
 ./setup-dev.sh
+
+# Sensible macOS defaults
+./.macos
 ```
 
 #### 6. Setup Oh-my-zsh
