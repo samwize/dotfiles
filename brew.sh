@@ -123,6 +123,7 @@ brew cask install atom
 # brew cask install sublime-text
 brew cask install sourcetree
 brew cask install sketch
+brew cask install zeplin
 
 echo "Install Junda's Productivity Apps"
 brew cask install skype

@@ -30,9 +30,3 @@ export LESS_TERMCAP_md="${yellow}";
 
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
-
-# Junda custom exports
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/Workspace/goapps/go_appengine"
-export GOPATH="$HOME/Workspace/go"
-export PATH="$PATH:$GOPATH/bin"

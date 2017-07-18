@@ -15,4 +15,4 @@ gem install cocoapods
 brew install imagemagick
 gem install lolcommits
 git config --global init.templatedir "$HOME/.git_template"
-export LOLCOMMITS_DIR="$HOME/Pictures/lolcommits"
+# Export of LOLCOMMITS_DIR in .zshrc
