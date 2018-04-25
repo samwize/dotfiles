@@ -2,7 +2,15 @@
 
 Dotfiles is great for setting up a new Mac.
 
-All files (except those listed in `bootstrap.sh`) in this repository will be copied to your home directory when you run `source bootstrap.sh`. So feel free to add any "dotfiles" to this repository, except your password.
+All files (excluding those listed in `bootstrap.sh`) will be copied to your home directory when you run `source bootstrap.sh`. So feel free to add any "dotfiles" to this repository, except your password.
+
+## Backup old computer
+
+```bash
+# Backup Xcode Keybindings
+# Backup Atom Keybindings and community packages installed
+apm list --installed --bare > ~/dotfiles/backup/atom/package-list.txt
+```
 
 ## Instructions for a new computer
 
