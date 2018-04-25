@@ -59,7 +59,7 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 chsh -s /bin/zsh
 ```
 
-My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, which requires Powerline font. In iTerm, go to Preferences > Profiles > Text > change font to a powerline supported font eg "Meslo LG M DZ for Powerline".
+My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, which requires Powerline font. In iTerm, go to Preferences > Profiles > Text > change font to a z eg "Meslo LG M DZ for Powerline" ([download](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf) and install).
 
 I have a preference for using [solarized](https://github.com/altercation/solarized) dark theme. In iTerm, you can change in Preferences > Profiles > Color > Color Presets
 
@@ -70,17 +70,19 @@ git config --global user.name YOUR_NAME
 git config --global user.email YOUR_EMAIL
 ```
 
+## Other Manual Configurations
+
+- Enable [drag with 3 fingers](https://support.apple.com/en-sg/HT204609) under Accessibility > Mouse & Trackpad > Trackpad Options
+
 ## Junda's Changes
 
 ### .osx
 
 - Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
 
-
 ### .aliases
 
 - Added `ws` for ~/Workspace
-
 
 ### Brew.sh
 

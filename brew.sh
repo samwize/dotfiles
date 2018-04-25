@@ -124,6 +124,7 @@ brew cask install atom
 brew cask install sourcetree
 brew cask install sketch
 brew cask install zeplin
+brew cask install tunnelblick
 
 echo "Install Junda's Productivity Apps"
 brew cask install skype

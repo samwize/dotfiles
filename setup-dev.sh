@@ -9,7 +9,7 @@ brew cask install fabric
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 rvm install 2.3.4
 
-gem install cocoapods
+sudo gem install cocoapods
 
 # lolcommits
 brew install imagemagick
