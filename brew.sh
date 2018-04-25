@@ -124,6 +124,8 @@ brew cask install atom
 brew cask install sourcetree
 brew cask install sketch
 brew cask install zeplin
+brew cask install fastlane
+brew cask install docker
 brew cask install tunnelblick
 
 echo "Install Junda's Productivity Apps"
@@ -138,11 +140,14 @@ brew cask install google-chrome
 brew cask install lastpass
 brew cask install transmission
 brew cask install spectacle
+brew cask install tunnelblick
 
 echo "Install Junda's Personal Apps"
 brew cask install whatsapp
 brew cask install adium
+brew cask install flickr-uploadr
 brew install youtube-dl
+brew install ffmpeg
 
 # Remove outdated versions from the cellar.
 brew cleanup
