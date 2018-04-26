@@ -7,33 +7,34 @@ All files (excluding those listed in `bootstrap.sh`) will be copied to your home
 ## Backup old computer
 
 ```bash
-# Backup Xcode Keybindings
-# Backup Atom Keybindings and community packages installed
+# Backup Atom's community packages installed
 apm list --installed --bare > ~/dotfiles/backup/atom/package-list.txt
+
+# Backup Xcode Keybindings.. todo
 ```
 
 ## Instructions for a new computer
 
-#### 1. Install brew
+### 1. Install brew
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#### 2. Install git
+### 2. Install git
 
 ```bash
 brew install git
 ```
 
-#### 3. Download dotfiles
+### 3. Download dotfiles
 
 ```bash
 cd ~
 git clone https://github.com/samwize/dotfiles && cd dotfiles
 ```
 
-#### 4. Auto setup with dotfiles
+### 4. Auto setup with dotfiles
 
 Inspect these files first: .bash_prompt, .exports, .aliases, .functions - it's your responsibility!
 
@@ -43,7 +44,7 @@ Once confirm run:
 source bootstrap.sh
 ```
 
-#### 5. Run these too
+### 5. Run these too
 
 ```bash
 # Install more brew stuff, cask install apps, and other apps
@@ -56,7 +57,7 @@ source bootstrap.sh
 ./.macos
 ```
 
-#### 6. Setup Oh-my-zsh
+### 6. Setup Oh-my-zsh
 
 Setup [samwize's oh-my-zsh](https://github.com/samwize/oh-my-zsh).
 
@@ -71,33 +72,23 @@ My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, wh
 
 I have a preference for using [solarized](https://github.com/altercation/solarized) dark theme. In iTerm, you can change in Preferences > Profiles > Color > Color Presets
 
-#### Others
+### 7. Other Manual Configurations
 
 ```bash
 git config --global user.name YOUR_NAME
 git config --global user.email YOUR_EMAIL
-```
 
-## Other Manual Configurations
+# Install Atom's packages
+cd ~/dotfiles/backup/atom/
+apm install --packages-file package-list.txt
+```
 
 - Enable [drag with 3 fingers](https://support.apple.com/en-sg/HT204609) under Accessibility > Mouse & Trackpad > Trackpad Options
 
 ## Junda's Changes
 
-### .osx
+My fork is based on [mathiasbynens](https://github.com/mathiasbynens/dotfiles) (the original dotfiles). There are [others](http://dotfiles.github.io)
 
-- Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
-
-### .aliases
-
-- Added `ws` for ~/Workspace
-
-### Brew.sh
-
-- Disable brew install which I don't always use
-
-## Original dotfiles
-
-My fork is based on [mathiasbynens](https://github.com/mathiasbynens/dotfiles).
-
-There are [others](http://dotfiles.github.io).
+- `.osx`: Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
+- `.aliases`: Added `ws` for ~/Workspace
+- `Brew.sh`: Disable brew install which I don't always use
