@@ -59,9 +59,13 @@ let mapleader=","
 set binary
 set noeol
 " Centralize backups, swapfiles and undo history
+
+call system("mkdir -p $HOME/.vim/backup")
+call system("mkdir -p $HOME/.vim/swap")
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
+	call system("mkdir -p $HOME/.vim/undo")
 	set undodir=~/.vim/undo
 endif
 
