@@ -16,3 +16,6 @@ brew install imagemagick
 gem install lolcommits
 git config --global init.templatedir "$HOME/.git_template"
 # Export of LOLCOMMITS_DIR in .zshrc
+
+# Install vim plugin
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
