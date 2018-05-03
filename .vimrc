@@ -60,8 +60,8 @@ set binary
 set noeol
 " Centralize backups, swapfiles and undo history
 
-call system("mkdir -p $HOME/.vim/backup")
-call system("mkdir -p $HOME/.vim/swap")
+call system("mkdir -p $HOME/.vim/backups")
+call system("mkdir -p $HOME/.vim/swaps")
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")

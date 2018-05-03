@@ -19,3 +19,6 @@ git config --global init.templatedir "$HOME/.git_template"
 
 # Install vim plugin
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/altercation/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
+mkdir -p ~/.vim/colors/
+cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/solarized.vim
