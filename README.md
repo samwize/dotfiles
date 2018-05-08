@@ -13,6 +13,10 @@ apm list --installed --bare > ~/dotfiles/backup/atom/package-list.txt
 # Backup Xcode Keybindings.. todo
 ```
 
+SENSITIVE stuff that has to be backup using external hard drive:
+
+    cp ~/.3T/robo-3t/1.2.1/robo3t.json /BACKUP/DRIVE/
+
 ## Instructions for a new computer
 
 ### 1. Install brew

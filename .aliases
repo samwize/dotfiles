@@ -157,5 +157,4 @@ alias itms='`xcode-select --print-path`/../Applications/Application\ Loader.app/
 alias be="bundle exec"
 alias jks="bundle exec jekyll serve"
 alias newpost="bundle exec octopress new post"
-
-
+alias youtube-dl-mp3="youtube-dl -x --audio-format=mp3"
