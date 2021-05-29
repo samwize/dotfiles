@@ -117,6 +117,7 @@ brew install iterm2
 brew install atom
 # brew install sublime-text
 brew install sourcetree
+brew install figma
 # brew install sketch
 brew install zeplin
 brew install fastlane
