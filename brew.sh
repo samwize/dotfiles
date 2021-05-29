@@ -89,7 +89,7 @@ brew upgrade --all
 # Install other useful binaries.
 # brew install ack
 # brew install dark-mode
-#brew install exiv2
+# brew install exiv2
 # brew install git
 # brew install git-lfs
 # brew install imagemagick --with-webp
@@ -108,46 +108,43 @@ brew upgrade --all
 # brew install webkit2png
 # brew install zopfli
 
-
-# JD: brew install
-echo "Brew Installing"
-brew install node
-
-# Install cask
-brew install caskroom/cask/brew-cask
+# ------------------
 
 # JD: Install my apps
+# Cask https://formulae.brew.sh/cask/
 echo "Install Junda's Dev Apps"
-brew cask install iterm2
-brew cask install atom
-# brew cask install sublime-text
-brew cask install sourcetree
-brew cask install sketch
-brew cask install zeplin
-brew cask install fastlane
-brew cask install docker
-brew cask install tunnelblick
+brew install iterm2
+brew install atom
+# brew install sublime-text
+brew install sourcetree
+# brew install sketch
+brew install zeplin
+brew install fastlane
+brew install tunnelblick
+brew install postman
 
 echo "Install Junda's Productivity Apps"
-brew cask install skype
-brew cask install slack
-brew cask install evernote
-brew cask install spotify
-brew cask install dropbox
-brew cask install transmit
-brew cask install vlc
-brew cask install google-chrome
-brew cask install lastpass
-brew cask install transmission
-brew cask install spectacle
-brew cask install tunnelblick
+# brew install skype
+# brew install slack
+# brew install evernote
+# brew install spotify
+brew install dropbox
+brew install transmit
+brew install vlc
+brew install google-chrome
+brew install brave-browser
+brew install lastpass
+# brew install transmission
+brew install spectacle
 
 echo "Install Junda's Personal Apps"
-brew cask install whatsapp
-brew cask install adium
-brew cask install flickr-uploadr
+# brew install whatsapp
+# brew install adium
+# brew install flickr-uploadr
 brew install youtube-dl
 brew install ffmpeg
+brew install handbrake
+brew install libdvdcss
 
 # Remove outdated versions from the cellar.
 brew cleanup
