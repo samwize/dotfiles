@@ -15,7 +15,10 @@ apm list --installed --bare > ~/dotfiles/backup/atom/package-list.txt
 
 SENSITIVE stuff that has to be backup using external hard drive:
 
+    # Example:
     cp ~/.3T/robo-3t/1.2.1/robo3t.json /BACKUP/DRIVE/
+
+Time Machine back up and restore can be used. But unreliable with incomplete restoration possible, eg. when Migration Assistant encounter file write error.
 
 ## Instructions for a new computer
 
@@ -42,16 +45,16 @@ git clone https://github.com/samwize/dotfiles && cd dotfiles
 
 Inspect these files first: .bash_prompt, .exports, .aliases, .functions - it's your responsibility!
 
-Once confirm run:
+Once confirmed all good, run:
 
 ```bash
 source bootstrap.sh
 ```
 
-### 5. Run these too
+### 5. Install apps, configure mac
 
 ```bash
-# Install more brew stuff, cask install apps, and other apps
+# Install more brew stuff and apps
 ./brew.sh
 
 # Install development apps, tools and setting them up
