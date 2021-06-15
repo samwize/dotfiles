@@ -137,6 +137,7 @@ brew install brave-browser
 brew install lastpass
 # brew install transmission
 brew install spectacle
+brew install skitch
 
 echo "Install Junda's Personal Apps"
 # brew install whatsapp
@@ -146,6 +147,7 @@ brew install youtube-dl
 brew install ffmpeg
 brew install handbrake
 brew install libdvdcss
+brew install folx
 
 # Remove outdated versions from the cellar.
 brew cleanup
