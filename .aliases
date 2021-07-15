@@ -16,6 +16,13 @@ alias ws="cd ~/Workspace"
 alias g="git"
 alias h="history"
 alias j="jobs"
+alias ff="ffmpeg"
+alias a="atom"
+alias jn="journal new -d"
+alias jp="journal newpage -d"
+alias js="jekyll s"
+alias jpost="jekyll post"
+alias opost="octopress new post"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

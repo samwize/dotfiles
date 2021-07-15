@@ -97,5 +97,5 @@ apm install --packages-file package-list.txt
 My fork is based on [mathiasbynens](https://github.com/mathiasbynens/dotfiles) (the original dotfiles). There are [others](http://dotfiles.github.io)
 
 - `.osx`: Removed changes to: Computer name, Desktop configurations such as icon snap to grid, Notification bar, natural scroll, etc. Prefixed my comments with `JD:`
-- `.aliases`: Added `ws` for ~/Workspace
+- `.aliases`: Added for my productivity
 - `Brew.sh`: Disable brew install which I don't always use
