@@ -10,6 +10,8 @@ gem install cocoapods
 # brew install fabric
 brew install node
 # brew install docker
+brew install go
+brew install pyenv 
 
 # lolcommits
 brew install imagemagick

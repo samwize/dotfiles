@@ -145,6 +145,7 @@ echo "Install Junda's Personal Apps"
 # brew install flickr-uploadr
 brew install youtube-dl
 brew install ffmpeg
+brew install exiftool
 brew install handbrake
 brew install libdvdcss
 brew install folx
