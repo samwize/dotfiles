@@ -121,20 +121,20 @@ brew install figma
 # brew install sketch
 brew install zeplin
 brew install fastlane
-brew install tunnelblick
+# brew install tunnelblick
 brew install postman
 
 echo "Install Junda's Productivity Apps"
 # brew install skype
-# brew install slack
+brew install slack
 # brew install evernote
-# brew install spotify
+brew install spotify
 brew install dropbox
 brew install transmit
 brew install vlc
 brew install google-chrome
 brew install brave-browser
-brew install lastpass
+# brew install lastpass
 # brew install transmission
 brew install spectacle
 brew install skitch
