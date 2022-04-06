@@ -1,8 +1,8 @@
 echo "Installing iOS Development Stuff"
 
 # RVM for Ruby
-# curl -sSL https://get.rvm.io | bash -s stable --ruby
-# rvm install 2.7.3
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+rvm install 2.7.5
 
 gem install cocoapods
 
@@ -11,12 +11,13 @@ gem install cocoapods
 brew install node
 # brew install docker
 brew install go
-brew install pyenv 
+brew install pyenv
 
 # lolcommits
 brew install imagemagick
 gem install lolcommits
 git config --global init.templatedir "$HOME/.git_template"
+git config --global core.editor "atom"
 # Export of LOLCOMMITS_DIR in .zshrc
 
 # Install vim plugin
