@@ -114,12 +114,13 @@ brew upgrade --all
 # Cask https://formulae.brew.sh/cask/
 echo "Install Junda's Dev Apps"
 brew install iterm2
-brew install atom
+brew install --cask visual-studio-code
+# brew install atom
 # brew install sublime-text
 brew install sourcetree
 brew install figma
 # brew install sketch
-brew install zeplin
+# brew install zeplin
 brew install fastlane
 # brew install tunnelblick
 brew install postman
@@ -128,9 +129,9 @@ echo "Install Junda's Productivity Apps"
 # brew install skype
 brew install slack
 # brew install evernote
-brew install spotify
-brew install dropbox
-brew install transmit
+# brew install spotify
+# brew install dropbox
+# brew install transmit
 brew install vlc
 brew install google-chrome
 brew install brave-browser
@@ -143,10 +144,10 @@ echo "Install Junda's Personal Apps"
 # brew install whatsapp
 # brew install adium
 # brew install flickr-uploadr
-brew install youtube-dl
+# brew install youtube-dl
 brew install ffmpeg
 brew install exiftool
-brew install handbrake
+# brew install handbrake
 brew install libdvdcss
 brew install folx
 

@@ -441,7 +441,7 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 defaults write com.apple.dock wvous-tr-corner -int 10
 defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Dashboard
-defaults write com.apple.dock wvous-bl-corner -int 7
+defaults write com.apple.dock wvous-bl-corner -int 2
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Bottom right screen corner → Show app windows
 defaults write com.apple.dock wvous-br-corner -int 3

@@ -69,13 +69,13 @@ source bootstrap.sh
 Setup [samwize's oh-my-zsh](https://github.com/samwize/oh-my-zsh).
 
 ```bash
-git clone git://github.com/samwize/oh-my-zsh.git ~/.oh-my-zsh
+git clone https://github.com/samwize/oh-my-zsh ~/.oh-my-zsh
 cd ~
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 chsh -s /bin/zsh
 ```
 
-My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, which requires Powerline font. In iTerm, go to Preferences > Profiles > Text > change font to a z eg "Meslo LG M DZ for Powerline" ([download](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf) and install).
+My zsh uses [agnoster](https://github.com/agnoster/agnoster-zsh-theme) theme, which requires Powerline font. In iTerm, go to Preferences > Profiles > Text > change font to eg "Meslo LG M DZ for Powerline" ([download](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf) and install).
 
 I have a preference for using [solarized](https://github.com/altercation/solarized) dark theme. In iTerm, you can change in Preferences > Profiles > Color > Color Presets
 
@@ -84,10 +84,6 @@ I have a preference for using [solarized](https://github.com/altercation/solariz
 ```bash
 git config --global user.name YOUR_NAME
 git config --global user.email YOUR_EMAIL
-
-# Install Atom's packages
-cd ~/dotfiles/backup/atom/
-apm install --packages-file package-list.txt
 ```
 
 - Enable [drag with 3 fingers](https://support.apple.com/en-sg/HT204609) under Accessibility > Mouse & Trackpad > Trackpad Options
