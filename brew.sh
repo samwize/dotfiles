@@ -121,13 +121,13 @@ brew install sourcetree
 brew install figma
 # brew install sketch
 # brew install zeplin
-brew install fastlane
+# brew install fastlane
 # brew install tunnelblick
 brew install postman
 
 echo "Install Junda's Productivity Apps"
 # brew install skype
-brew install slack
+# brew install slack
 # brew install evernote
 # brew install spotify
 # brew install dropbox
@@ -148,7 +148,7 @@ echo "Install Junda's Personal Apps"
 brew install ffmpeg
 brew install exiftool
 # brew install handbrake
-brew install libdvdcss
+# brew install libdvdcss
 brew install folx
 
 # Remove outdated versions from the cellar.

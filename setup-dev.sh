@@ -2,16 +2,16 @@ echo "Installing iOS Development Stuff"
 
 # RVM for Ruby
 curl -sSL https://get.rvm.io | bash -s stable --ruby
-rvm install 2.7.5
+# rvm install 2.7.5
 
-gem install cocoapods
+# gem install cocoapods
 
 # npm install ios-sim -g
 # brew install fabric
 brew install node
 # brew install docker
-brew install go
-brew install pyenv
+# brew install go
+# brew install pyenv
 
 # lolcommits
 brew install imagemagick
