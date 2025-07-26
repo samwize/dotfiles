@@ -25,7 +25,8 @@ Time Machine back up and restore can be used. But unreliable with incomplete res
 ### 1. Install brew
 
 ```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# https://brew.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### 2. Install git
@@ -50,6 +51,8 @@ Once confirmed all good, run:
 ```bash
 source bootstrap.sh
 ```
+
+Or, run rsync yourself. It copies those dotfiles to your home.
 
 ### 5. Install apps, configure mac
 
@@ -81,12 +84,9 @@ I have a preference for using [solarized](https://github.com/altercation/solariz
 
 ### 7. Other Manual Configurations
 
-```bash
-git config --global user.name YOUR_NAME
-git config --global user.email YOUR_EMAIL
-```
-
 - Enable [drag with 3 fingers](https://support.apple.com/en-sg/HT204609) under Accessibility > Mouse & Trackpad > Trackpad Options
+- Install [NVM](https://github.com/nvm-sh/nvm) and `nvm install --lts`
+- `npm install -g @anthropic-ai/claude-code`
 
 ## Junda's Changes
 
