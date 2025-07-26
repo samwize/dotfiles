@@ -10,13 +10,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
-# JD: Every new computer could have it's own name. Don't do it.
-# Set computer name (as done via System Preferences → Sharing)
-# sudo scutil --set ComputerName "Junda"
-# sudo scutil --set HostName "Junda"
-# sudo scutil --set LocalHostName "Junda"
-# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Junda"
-
 # JD: Set standby delay to 1 hour
 sudo pmset -a standbydelay 3600
 

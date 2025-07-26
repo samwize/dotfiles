@@ -87,6 +87,9 @@ I have a preference for using [solarized](https://github.com/altercation/solariz
 - Enable [drag with 3 fingers](https://support.apple.com/en-sg/HT204609) under Accessibility > Mouse & Trackpad > Trackpad Options
 - Install [NVM](https://github.com/nvm-sh/nvm) and `nvm install --lts`
 - `npm install -g @anthropic-ai/claude-code`
+- `sudo scutil --set ComputerName "DaMachineName"`
+- `sudo scutil --set HostName "DaMachineName"`
+- `sudo scutil --set LocalHostName "DaMachineName"`
 
 ## Junda's Changes
 
