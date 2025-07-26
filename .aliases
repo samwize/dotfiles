@@ -5,24 +5,13 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias ws="cd ~/Workspace"
-alias g="git"
-alias h="history"
-alias j="jobs"
 alias ff="ffmpeg"
-alias a="atom"
-alias jn="journal new -d"
-alias jp="journal newpage -d"
-alias js="jekyll s"
-alias jpost="jekyll post"
-alias opost="octopress new post"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -157,10 +146,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
-# JD: For using iTunes Transporter anywhere
-alias itms='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'
-
-# JD: For Bundler to load gems
+# JD
 alias be="bundle exec"
 alias jks="bundle exec jekyll serve"
 alias newpost="bundle exec octopress new post"
@@ -169,3 +155,9 @@ alias resize="sips -Z"
 alias resizem="sips -Z 800"
 alias resizel="sips -Z 1200"
 alias resizes="sips -Z 400"
+alias jn="journal new -d"
+alias jp="journal newpage -d"
+alias js="jekyll s"
+alias jpost="jekyll post"
+alias gb="git branch"
+alias gcb="git checkout -b"
