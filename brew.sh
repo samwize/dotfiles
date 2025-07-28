@@ -28,6 +28,7 @@ brew install figma
 # brew install tunnelblick
 brew install postman
 brew install node
+brew install --cask discord
 
 echo "Install Junda's Productivity Apps"
 # brew install skype
