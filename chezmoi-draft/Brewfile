@@ -1,0 +1,36 @@
+# Brewfile (chezmoi-managed)
+# This is a baseline. On DaStudio, regenerate and curate:
+#   brew bundle dump --force --file Brewfile
+
+brew "git"
+brew "git-lfs"
+brew "gh"
+brew "chezmoi"
+
+# Shell UX (plain zsh)
+brew "starship"
+brew "zoxide"
+
+# Common CLIs you actually use
+brew "node"
+brew "pnpm"
+brew "ccusage"
+brew "fastlane"
+brew "yt-dlp"
+brew "ffmpeg"
+
+# Journaling (for `journal` gem)
+brew "ruby"
+
+# Apps (curate per-machine as needed)
+cask "iterm2"
+cask "visual-studio-code"
+cask "google-chrome"
+cask "brave-browser"
+cask "figma"
+cask "postman"
+cask "sourcetree"
+cask "skitch"
+cask "vlc"
+cask "claude-code"
+

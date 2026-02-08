@@ -2,7 +2,9 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
+echo "NOTE: This bootstrap script is deprecated. Prefer chezmoi." >&2
+echo "See: MIGRATING_TO_CHEZMOI.md" >&2
+echo "" >&2
 
 function doIt() {
 	rsync --exclude ".git/" \

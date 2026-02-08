@@ -2,6 +2,14 @@
 
 Dotfiles is great for setting up a new Mac.
 
+## Status
+
+I’m migrating from this `bootstrap.sh`/`rsync`-style dotfiles setup to **chezmoi**.
+I’m also removing **oh-my-zsh** in favor of a plain zsh config managed by chezmoi.
+
+See `MIGRATING_TO_CHEZMOI.md`.
+For a fresh Mac bootstrap, see `NEW_COMPUTER.md`.
+
 All files (excluding those listed in `bootstrap.sh`) will be copied to your home directory when you run `source bootstrap.sh`. So feel free to add any "dotfiles" to this repository, except your password.
 
 ## Backup old computer

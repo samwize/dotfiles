@@ -1,0 +1,9 @@
+# Managed by chezmoi.
+# Keep this minimal: it runs for every zsh invocation (including non-interactive).
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Rust toolchain (adds ~/.cargo/bin to PATH).
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+

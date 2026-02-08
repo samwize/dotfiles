@@ -1,0 +1,39 @@
+# Managed by chezmoi.
+# Plain zsh config (no oh-my-zsh).
+
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
+ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+
+for zsh_file in env aliases functions; do
+  if [ -r "${ZSH_CONFIG_DIR}/${zsh_file}.zsh" ]; then
+    source "${ZSH_CONFIG_DIR}/${zsh_file}.zsh"
+  fi
+done
+unset zsh_file
+
+HOST_SHORT="$(hostname -s 2>/dev/null || hostname)"
+HOST_FILE="${ZSH_CONFIG_DIR}/hosts/${HOST_SHORT}.zsh"
+if [ -r "$HOST_FILE" ]; then
+  source "$HOST_FILE"
+fi
+unset HOST_SHORT HOST_FILE
+
+# Completion
+autoload -Uz compinit
+COMPDUMP_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$COMPDUMP_DIR" 2>/dev/null || true
+compinit -d "${COMPDUMP_DIR}/zcompdump"
+unset COMPDUMP_DIR
+
+# Prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+# Directory jumping (keeps the `z` command)
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
