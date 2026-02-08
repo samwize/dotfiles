@@ -1,245 +1,202 @@
-# Migrating off `~/dotfiles` *and* oh-my-zsh to chezmoi (single source of truth)
+# Chezmoi migration (audit-first)
 
-Goal: **deprecate both**:
+This document covers migrating this machine off this repo’s legacy `bootstrap.sh`/`rsync` flow and off `~/.oh-my-zsh`, and ending up with a **plain zsh** setup managed by **chezmoi**.
 
-- this repo’s `bootstrap.sh`/`rsync` dotfiles flow
-- `~/.oh-my-zsh` (and any oh-my-zsh-managed plugins/themes)
+For setting up a brand new Mac going forward, use `NEW_COMPUTER.md`.
 
-…and end up with **plain zsh config managed by chezmoi**, containing only what you actually use today.
+This repo also includes a reviewed starting point at `chezmoi-draft/` (a draft chezmoi source tree).
 
-## What is “enabled” today (high level)
+## Success criteria
 
-This repo is an older “copy everything into `$HOME`” style setup. Running `source bootstrap.sh` copied repo files into `~` and then sourced `~/.bash_profile`.
+- `chezmoi diff` is clean after `chezmoi apply`.
+- A fresh `exec zsh -l` works (no oh-my-zsh).
+- Only the aliases/functions/env you actually use are kept.
+- “Bootstrap installs” (Homebrew bundle, gems, cargo tools, npm globals, macOS defaults) are *intentional*, not accidental.
 
-Your current day-to-day shell config is **zsh**, and it is primarily driven by files in `~`:
+## Important: keep scripts off until you’re ready
 
-- `~/.zshenv` (runs for *every* zsh invocation)
-- `~/.zprofile` (login shells)
-- `~/.zshrc` (interactive shells)
-- `~/.zlogin` (login hook)
+The draft includes `.chezmoiscripts/` hooks (brew bundle, macOS defaults, etc).
 
-Historically, oh-my-zsh has been “enabled” by `~/.zshrc` containing `source $ZSH/oh-my-zsh.sh`.
+While migrating, apply dotfiles without executing scripts:
 
-## Migration plan (minimal disruption, maximum pruning)
+```sh
+chezmoi diff --exclude=scripts
+chezmoi apply --exclude=scripts -v
+```
 
-### Phase 0 — Freeze (optional snapshot)
+Then, only when you’ve reviewed the lists/scripts, run them explicitly (see “Bootstrap installs” below).
 
-1) Stop running `bootstrap.sh` from this repo.
-2) Optional but still recommended if you’re about to do big shell edits: make a quick local snapshot so you can recover from a broken shell config.
+## 0) Freeze + snapshot (recommended)
+
+Stop running `source ~/dotfiles/bootstrap.sh`.
+
+Make a quick rollback copy of your current shell config:
 
 ```sh
 mkdir -p ~/dotfiles-migration-backup
 cp -a ~/.zshenv ~/.zprofile ~/.zshrc ~/.zlogin ~/dotfiles-migration-backup/ 2>/dev/null || true
+cp -a ~/.gitconfig ~/dotfiles-migration-backup/ 2>/dev/null || true
 ```
 
-If you plan to delete oh-my-zsh later, snapshot it too (optional):
+## 1) Audit (Marie Kondo pass)
 
-```sh
-cp -a ~/.oh-my-zsh ~/dotfiles-migration-backup/ 2>/dev/null || true
-```
+Goal: identify what actually supports your day-to-day work, and ditch the rest.
 
-### Phase 1 — Audit what you *actually* use
-
-You can’t prune safely without an audit.
-
-1) Identify your most-used commands (helps decide which aliases/functions to keep).
+Identify your most-used commands (helps prune aliases/functions/env):
 
 ```sh
 awk '/^: [0-9]+:[0-9]+;/{line=$0; sub(/^: [0-9]+:[0-9]+;/,"",line); print line}' ~/.zsh_history \
   | awk '{print $1}' | sort | uniq -c | sort -nr | head -30
 ```
 
-2) List what your current shell defines (so you can re-create only the useful subset):
+Inspect what your current interactive login zsh defines:
 
 ```sh
-zsh -lic 'echo "PATH=$PATH"; echo; alias | head -50'
+zsh -lic 'echo "PATH=$PATH"; echo; alias | head -80'
 ```
 
-3) Make a “keep / drop” list from your current `~/.zshrc`:
-
-- **Keep**: things you can explain why you need (tool init, PATH entries, env vars you rely on).
-- **Drop**: historical PATH clutter, unused SDK blocks, old editors (Atom), old tools (Spectacle), Python 2-era helpers, etc.
-
-#### What your history suggests you should preserve
-
-From your `~/.zsh_history`, the “muscle memory” commands worth keeping are:
-
-- Git: `gst`, `gco`, `gl`, plus your custom `gac`/`gacp`
-- Navigation: `la`, `..`, and a `z`-style directory jumper
-- Journaling: `jn` (currently `journal new -d`)
-- Tooling you call directly (not shell-specific): `pnpm`, `npm`, `npx`, `brew`, `fastlane`, `jekyll`, `yt-dlp`, `ffmpeg`
-
-Current definitions (as seen in an interactive login zsh):
+Dump the “shape” of your current shell (useful before you start deleting):
 
 ```sh
-gst='git status'
-gco='git checkout'
-gl='git pull'
-la='ls -lAh'
-jn='journal new -d'
-
-gac()  { git add . && git commit -a -m "$1" }
-gacp() { git add . && git commit -a -m "$1" && git push }
-gdelete() { git branch --delete "$1" && git push origin --delete "$1" }
+zsh -lic 'echo; echo "path entries:"; print -l $path | sed -n "1,120p"; echo; echo "function names:"; print -l ${(k)functions} | sort | sed -n "1,120p"'
 ```
 
-### Phase 2 — Choose replacements for oh-my-zsh features
+Now write down a short keep list:
 
-Replace only what you miss after removing oh-my-zsh. A practical baseline:
+- Shell “muscle memory” aliases you type daily
+- Any PATH/env additions you can justify
+- Any functions you actually call (or that save you time)
+- Any completions/prompt/directory jumping you would miss immediately
 
-- Prompt/theme: use `starship` (or another prompt) instead of an oh-my-zsh theme.
-- Directory jumping: replace oh-my-zsh `z` plugin with `zoxide`.
-- Git aliases: define your own small set in your zsh config (e.g. `gst`, `gco`, `gl`, plus your `gac`/`gacp` functions).
-- Completion: use native zsh completion (`compinit`) and optionally install extra completions via Homebrew (`zsh-completions`) if needed.
+Everything else: delete it until you miss it. If it doesn’t spark joy, it doesn’t make the cut.
 
-#### Known “noise” to remove while you’re here
+## 2) Start from `chezmoi-draft/` (minimal baseline)
 
-When running `zsh -lic ...`, your current init prints warnings/errors:
+`chezmoi-draft/` is a proposed minimal baseline:
 
-- `nvm` warns about npm’s `prefix` being `/opt/homebrew` (common when you’re actually using Homebrew’s Node).
-- `pyenv` reports shims not writable (your `~/.pyenv/shims` contains root-owned files).
+- plain zsh (`dot_zsh*` + `dot_config/zsh/*`)
+- curated git config + global ignore
+- a baseline Brewfile
+- optional bootstrap scripts under `.chezmoiscripts/`
 
-The migration is a good time to pick one Node strategy (Homebrew *or* a version manager) and fix pyenv ownership if you still use it.
+Before copying, prune it so it matches what you actually use:
 
-### Phase 3 — Initialize chezmoi and import *current* truth
+- `chezmoi-draft/Brewfile` (remove unused casks/formulae)
+- `chezmoi-draft/dot_config/zsh/env.zsh` (remove unused PATH blocks)
+- `chezmoi-draft/dot_config/bootstrap/*` (remove placeholders you don’t use, e.g. `meteorite`, `ore-hq-client`)
+- `chezmoi-draft/.chezmoiscripts/*` (review anything that runs `sudo` / touches system defaults)
 
-Important: your `~` copies have drifted from this repo, so import from `~`, not `~/dotfiles`.
+Copy the draft into your real chezmoi source directory:
 
 ```sh
-chezmoi init
-chezmoi add ~/.zshenv ~/.zprofile ~/.zshrc ~/.zlogin
-chezmoi add ~/.gitconfig
+chezmoi cd
+# (in another terminal, from this dotfiles repo root)
+rsync -a chezmoi-draft/ ~/.local/share/chezmoi/
 ```
 
-Optional:
+Notes:
+
+- If `~/.local/share/chezmoi` already exists, back it up first.
+- `rsync -a` preserves executable bits for `.chezmoiscripts/`.
+
+If you find something in `~` that still sparks joy later, add it deliberately:
 
 ```sh
-chezmoi add ~/.curlrc ~/.editorconfig
+chezmoi add ~/.some-file
 ```
 
-### Phase 4 — Refactor into “plain zsh” (remove oh-my-zsh)
+## 3) Cut over on this machine (dotfiles only)
 
-In your chezmoi-managed `~/.zshrc`:
-
-1) Remove (or comment) these:
-
-- `export ZSH=...`
-- `plugins=(...)`
-- `source $ZSH/oh-my-zsh.sh`
-
-2) Add a minimal zsh baseline:
-
-- `autoload -Uz compinit && compinit`
-- prompt init (e.g. starship)
-- source small, local files for aliases/functions if you prefer modular config
-
-3) Port only the custom pieces you actually use:
-
-- from oh-my-zsh git plugin: define your own `gst`, `gco`, `gl`, etc.
-- from your custom plugin: keep `gac`, `gacp`, `gdelete` if you still use them
-- from old dotfiles: keep `la`, `..`, etc *only if you still use them*
-
-#### Replace `z` plugin (keep the `z` command)
-
-oh-my-zsh currently provides `z` via its `z` plugin (you effectively have `z='_z 2>&1'`).
-
-With `zoxide`, you still keep the `z` command, but without oh-my-zsh:
+Preview changes without executing scripts:
 
 ```sh
-brew install zoxide
-# in ~/.zshrc
-eval "$(zoxide init zsh)"
+chezmoi diff --exclude=scripts
 ```
 
-#### Suggested “plain zsh” baseline (chezmoi source)
-
-If you want to go all-in on chezmoi, a clean starting point is to manage these in your chezmoi source as:
-
-- `dot_zshenv` → `~/.zshenv`
-- `dot_zprofile` → `~/.zprofile`
-- `dot_zshrc` → `~/.zshrc`
-
-Example `~/.zshrc` (keep it small; add only when you miss something):
+Apply (still no scripts):
 
 ```sh
-# Completion
-autoload -Uz compinit && compinit
-
-# Prompt (optional)
-command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
-
-# Directory jumping (replaces oh-my-zsh z)
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
-
-# Common aliases you actually use
-alias gst='git status'
-alias gco='git checkout'
-alias gl='git pull'
-alias la='ls -lAh'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias jn='journal new -d'
-
-# Your custom git helpers
-gac()  { git add . && git commit -a -m "$1" }
-gacp() { git add . && git commit -a -m "$1" && git push }
-gdelete() { git branch --delete "$1" && git push origin --delete "$1" }
-```
-
-Then install only the tools you chose:
-
-```sh
-brew install starship zoxide
-```
-
-### Phase 5 — Move “setup scripts” into chezmoi patterns
-
-This repo’s one-shot scripts are a mix of outdated and machine-specific. With chezmoi:
-
-- Homebrew installs: move to `Brewfile` + a `run_once_...` script that runs `brew bundle`.
-- macOS defaults: keep a curated subset (not the whole `.macos`) in a `run_onchange_...` script.
-
-### Phase 6 — Cutover and verify
-
-```sh
-chezmoi diff
-chezmoi apply -v
+chezmoi apply --exclude=scripts -v
 exec zsh -l
 ```
 
-Verify:
+## 4) Verify (plain zsh, no oh-my-zsh)
 
-- prompt renders correctly
-- completions work (`git <TAB>`, etc.)
-- your most-used aliases still exist (`gst`, `gco`, `gl`, `la`, `jn`, `z` replacement, etc.)
+Confirm you’re not sourcing oh-my-zsh anymore:
 
-### Phase 7 — Deprecate and remove the old systems
+- `~/.zshrc` should not contain `source $ZSH/oh-my-zsh.sh`.
 
-1) Deprecate `~/dotfiles`:
+Verify your daily drivers exist:
 
-- don’t run `bootstrap.sh` anymore
-- archive the repo or keep it as historical reference
+```sh
+type gst gco gl la jn z gac gacp gdelete
+```
 
-2) Deprecate oh-my-zsh:
+If something is missing, add it back deliberately in the modular files:
 
-- once you’ve run for a few days without issues:
+- `~/.config/zsh/aliases.zsh`
+- `~/.config/zsh/functions.zsh`
+- `~/.config/zsh/env.zsh`
+- `~/.config/zsh/hosts/<hostname>.zsh` (host-only tweaks)
+
+## 5) Bootstrap installs (optional, run intentionally)
+
+The draft includes:
+
+- Homebrew bundle (`.chezmoiscripts/run_once_20_brew_bundle.sh` + `Brewfile`)
+- Ruby gems (`journal`) via `~/.config/bootstrap/gems.txt`
+- cargo tools via `~/.config/bootstrap/cargo.txt`
+- npm globals via `~/.config/bootstrap/npm-global.txt`
+- curated macOS defaults (`.chezmoiscripts/run_onchange_10_macos_defaults.sh`)
+
+Two safe ways to run these step-by-step:
+
+### A) Run the scripts manually (recommended during migration)
+
+This avoids any “run once” state surprises and lets you run only what you want:
+
+```sh
+chezmoi cd
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_20_brew_bundle.sh
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_30_ruby_gems.sh
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_35_rustup.sh
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_40_cargo_tools.sh
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_50_npm_global.sh
+CHEZMOI_MACOS_DEFAULTS=1 ./.chezmoiscripts/run_onchange_10_macos_defaults.sh
+```
+
+### B) Let chezmoi execute scripts (only when you’re ready)
+
+Only do this once you’ve curated the Brewfile/lists and you’re ready for *all* enabled scripts:
+
+```sh
+CHEZMOI_BOOTSTRAP=1 CHEZMOI_MACOS_DEFAULTS=1 \
+  chezmoi apply --include=scripts -v
+```
+
+If you run `chezmoi apply --include=scripts` without the env vars, the scripts will “skip” but still be considered run by chezmoi (since they exit successfully).
+
+## 6) Deprecate the old systems (after a few days)
+
+Once you’ve had a stable shell for a few days:
+
+- Archive this repo’s legacy flow: don’t run `bootstrap.sh` anymore.
+- Disable oh-my-zsh:
 
 ```sh
 mv ~/.oh-my-zsh ~/.oh-my-zsh.bak
 ```
 
-- if everything is stable after another few days/weeks, delete the backup.
+If everything stays stable, delete the backup later.
 
-## Two-machine setup (Mac Studio “main” + MacBook “secondary”)
+## New Mac setup
 
-Recommended order:
+See `NEW_COMPUTER.md`.
 
-1) Build the baseline on your Mac Studio (the “main” machine): plain zsh + core tooling.
-2) Apply on the MacBook, then add *only* laptop-specific differences (battery/power, Dock/hot corners if you care, etc.).
+## Two-machine setup (main + secondary)
 
-In chezmoi templates, prefer host-conditional config rather than forking everything:
+Prefer one repo with small host-specific diffs:
 
-- Use `{{ .chezmoi.hostname }}` for host-specific sections.
-- Use `{{ if eq .chezmoi.hostname "..." }}` blocks in templates for small diffs.
-- For larger diffs, keep host-specific files like `dot_config/.../something.<hostname>.tmpl` and include them conditionally from a common file.
+- Put shared config in `~/.config/zsh/*.zsh`.
+- Put host-specific tweaks in `~/.config/zsh/hosts/<hostname>.zsh`.
+- For templates, use `.chezmoi.hostname` and conditionals.
