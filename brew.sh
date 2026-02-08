@@ -20,6 +20,7 @@ echo "Install Junda's Dev Apps"
 brew install --cask iterm2
 brew install --cask visual-studio-code
 brew install --cask github
+brew install gh
 # brew install sourcetree
 brew install figma
 # brew install sketch
