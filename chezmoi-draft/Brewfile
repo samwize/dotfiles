@@ -19,9 +19,6 @@ brew "pnpm"
 brew "yt-dlp"
 brew "ffmpeg"
 
-# Journaling (for `journal` gem)
-brew "ruby"
-
 # Apps (curate per-machine as needed)
 cask "iterm2"
 cask "visual-studio-code"

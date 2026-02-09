@@ -85,7 +85,7 @@ Before copying, prune it so it matches what you actually use:
 
 - `chezmoi-draft/Brewfile` (remove unused casks/formulae)
 - `chezmoi-draft/dot_config/zsh/env.zsh` (remove unused PATH blocks)
-- `chezmoi-draft/dot_config/bootstrap/*` (remove placeholders you don’t use, e.g. `ore-hq-client`)
+- `chezmoi-draft/dot_config/bootstrap/npm-global.txt` (keep only npm tools you actually want installed globally)
 - `chezmoi-draft/.chezmoiscripts/*` (review anything that runs `sudo` / touches system defaults)
 
 Copy the draft into your real chezmoi source directory:
@@ -119,6 +119,7 @@ Apply (still no scripts):
 
 ```sh
 chezmoi apply --exclude=scripts -v
+rm -f ~/.zlogin
 exec zsh -l
 ```
 
@@ -146,37 +147,37 @@ If something is missing, add it back deliberately in the modular files:
 The draft includes:
 
 - Homebrew bundle (`.chezmoiscripts/run_once_20_brew_bundle.sh` + `Brewfile`)
-- Ruby gems (`journal`) via `~/.config/bootstrap/gems.txt`
-- cargo tools via `~/.config/bootstrap/cargo.txt`
 - npm globals via `~/.config/bootstrap/npm-global.txt`
 - curated macOS defaults (`.chezmoiscripts/run_onchange_10_macos_defaults.sh`)
 
-Two safe ways to run these step-by-step:
-
-### A) Run the scripts manually (recommended during migration)
+Run the scripts manually (recommended during migration).
 
 This avoids any “run once” state surprises and lets you run only what you want:
 
 ```sh
 chezmoi cd
 CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_20_brew_bundle.sh
-CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_30_ruby_gems.sh
-CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_35_rustup.sh
-CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_40_cargo_tools.sh
 CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_50_npm_global.sh
 CHEZMOI_MACOS_DEFAULTS=1 ./.chezmoiscripts/run_onchange_10_macos_defaults.sh
 ```
 
-### B) Let chezmoi execute scripts (only when you’re ready)
+## Private CLIs (Toolbelt + Meteorite)
 
-Only do this once you’ve curated the Brewfile/lists and you’re ready for *all* enabled scripts:
+These are local/in-house CLIs (not installed from public registries). Set them up from `~/Workspace`:
 
 ```sh
-CHEZMOI_BOOTSTRAP=1 CHEZMOI_MACOS_DEFAULTS=1 \
-  chezmoi apply --include=scripts -v
-```
+# Toolbelt (includes journaling used by `jn`)
+cd ~/Workspace/toolbelt
+pnpm install
+pnpm build
+npm link
 
-If you run `chezmoi apply --include=scripts` without the env vars, the scripts will “skip” but still be considered run by chezmoi (since they exit successfully).
+# Meteorite
+cd ~/Workspace/meteorite
+npm install
+npm run build
+npm link
+```
 
 ## 6) Deprecate the old systems (after a few days)
 

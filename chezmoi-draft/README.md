@@ -9,7 +9,7 @@ Canonical step-by-step plan: `../MIGRATING_TO_CHEZMOI.md`.
 
 ## What’s inside
 
-- `dot_zshenv`, `dot_zprofile`, `dot_zshrc`, `dot_zlogin`: plain zsh (no oh-my-zsh)
+- `dot_zshenv`, `dot_zprofile`, `dot_zshrc`: plain zsh (no oh-my-zsh)
 - `dot_config/zsh/*`: modular zsh config (aliases/functions/env + per-host overrides)
 - `dot_gitconfig`: git config with:
   - removed `commit.template` (`~/.stCommitMsg` legacy)
@@ -19,10 +19,8 @@ Canonical step-by-step plan: `../MIGRATING_TO_CHEZMOI.md`.
 - `Brewfile`: baseline Homebrew packages/apps (intended to be dumped+curated from DaStudio later)
 - `.chezmoiscripts/*`: idempotent hooks for:
   - `brew bundle`
-  - Ruby gems (for `journal` → `jn`)
-  - cargo tools
   - optional npm global installs
   - curated macOS defaults
-- `dot_config/bootstrap/*`: the “non-brew” install lists (`gems.txt`, `cargo.txt`, `npm-global.txt`)
+- `dot_config/bootstrap/*`: the “non-brew” install lists (`npm-global.txt`)
 
 Review + execution instructions live in `../MIGRATING_TO_CHEZMOI.md`.

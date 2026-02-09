@@ -13,9 +13,6 @@ alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gl='git pull'
 
-# Journal muscle memory
-alias jn='journal new -d'
-
 alias ws='cd ~/Workspace'
 
 alias reload='exec zsh -l'

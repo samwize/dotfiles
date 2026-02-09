@@ -1,3 +1,2 @@
 # One npm package name per line.
-meteorite
 @openai/codex

@@ -121,7 +121,6 @@ brew install sourcetree
 brew install figma
 # brew install sketch
 # brew install zeplin
-# brew install fastlane
 # brew install tunnelblick
 brew install postman
 

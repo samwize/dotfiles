@@ -1,3 +1,0 @@
-# One gem name per line.
-journal
-

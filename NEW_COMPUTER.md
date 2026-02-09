@@ -53,8 +53,10 @@ exec zsh -l
 If your dotfiles repo includes `.chezmoiscripts/` (brew bundle, macOS defaults, etc.), run them only when you’re ready:
 
 ```sh
-CHEZMOI_BOOTSTRAP=1 CHEZMOI_MACOS_DEFAULTS=1 \
-  chezmoi apply --include=scripts -v
+chezmoi cd
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_20_brew_bundle.sh
+CHEZMOI_BOOTSTRAP=1 ./.chezmoiscripts/run_once_50_npm_global.sh
+CHEZMOI_MACOS_DEFAULTS=1 ./.chezmoiscripts/run_onchange_10_macos_defaults.sh
 ```
 
 If you want to run scripts step-by-step during migration/refinement, follow `MIGRATING_TO_CHEZMOI.md`.
