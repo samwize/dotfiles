@@ -83,7 +83,7 @@ Before copying, prune it so it matches what you actually use:
 
 - `chezmoi-draft/Brewfile` (remove unused casks/formulae)
 - `chezmoi-draft/dot_config/zsh/env.zsh` (remove unused PATH blocks)
-- `chezmoi-draft/dot_config/bootstrap/*` (remove placeholders you don’t use, e.g. `meteorite`, `ore-hq-client`)
+- `chezmoi-draft/dot_config/bootstrap/*` (remove placeholders you don’t use, e.g. `ore-hq-client`)
 - `chezmoi-draft/.chezmoiscripts/*` (review anything that runs `sudo` / touches system defaults)
 
 Copy the draft into your real chezmoi source directory:
