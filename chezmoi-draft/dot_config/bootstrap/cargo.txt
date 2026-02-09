@@ -1,4 +1,0 @@
-# One cargo crate name per line.
-# Kept minimal; add more as needed.
-ore-hq-client
-

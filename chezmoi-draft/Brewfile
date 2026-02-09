@@ -16,8 +16,6 @@ brew "tmux"
 brew "bun"
 brew "node"
 brew "pnpm"
-brew "ccusage"
-brew "fastlane"
 brew "yt-dlp"
 brew "ffmpeg"
 
