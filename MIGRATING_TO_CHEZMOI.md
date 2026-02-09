@@ -45,8 +45,10 @@ Goal: identify what actually supports your day-to-day work, and ditch the rest.
 Identify your most-used commands (helps prune aliases/functions/env):
 
 ```sh
-awk '/^: [0-9]+:[0-9]+;/{line=$0; sub(/^: [0-9]+:[0-9]+;/,"",line); print line}' ~/.zsh_history \
-  | awk '{print $1}' | sort | uniq -c | sort -nr | head -30
+(export LC_ALL=C LANG=C
+  awk '/^: [0-9]+:[0-9]+;/{line=$0; sub(/^: [0-9]+:[0-9]+;/,"",line); print line}' ~/.zsh_history \
+    | awk '{print $1}' | sort | uniq -c | sort -nr | head -30
+)
 ```
 
 Inspect what your current interactive login zsh defines:

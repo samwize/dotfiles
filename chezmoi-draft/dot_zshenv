@@ -4,6 +4,13 @@
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+# User-local binaries.
+if [ -d "$HOME/.local/bin" ]; then
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+  esac
+fi
+
 # Rust toolchain (adds ~/.cargo/bin to PATH).
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-

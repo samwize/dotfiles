@@ -1,4 +1,3 @@
 # One npm package name per line.
-# `meteorite` is a frequent command in your history; adjust if your package name differs.
 meteorite
-
+@openai/codex

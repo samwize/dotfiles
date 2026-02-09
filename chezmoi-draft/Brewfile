@@ -10,8 +10,10 @@ brew "chezmoi"
 # Shell UX (plain zsh)
 brew "starship"
 brew "zoxide"
+brew "tmux"
 
 # Common CLIs you actually use
+brew "bun"
 brew "node"
 brew "pnpm"
 brew "ccusage"
@@ -33,4 +35,3 @@ cask "sourcetree"
 cask "skitch"
 cask "vlc"
 cask "claude-code"
-
