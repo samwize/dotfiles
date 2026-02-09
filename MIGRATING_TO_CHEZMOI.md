@@ -93,13 +93,13 @@ Copy the draft into your real chezmoi source directory:
 ```sh
 chezmoi cd
 # (in another terminal, from this dotfiles repo root)
-rsync -a chezmoi-draft/ ~/.local/share/chezmoi/
+rsync -a --delete chezmoi-draft/ ~/.local/share/chezmoi/
 ```
 
 Notes:
 
 - If `~/.local/share/chezmoi` already exists, back it up first.
-- `rsync -a` preserves executable bits for `.chezmoiscripts/`.
+- `rsync -a --delete` preserves executable bits for `.chezmoiscripts/` and also removes files you deleted from the draft (so you don’t keep stale dotfiles like `dot_zlogin`).
 
 If you find something in `~` that still sparks joy later, add it deliberately:
 
