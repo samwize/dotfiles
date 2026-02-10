@@ -6,6 +6,7 @@ setopt HIST_IGNORE_SPACE
 
 ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
+# Modular zsh config lives in ~/.config/zsh/{env,aliases,functions}.zsh (loads in order)
 for zsh_file in env aliases functions; do
   if [ -r "${ZSH_CONFIG_DIR}/${zsh_file}.zsh" ]; then
     source "${ZSH_CONFIG_DIR}/${zsh_file}.zsh"
@@ -13,6 +14,7 @@ for zsh_file in env aliases functions; do
 done
 unset zsh_file
 
+# Special config for each host eg. ~/.config/zsh/hosts/DaStudio.zsh (if it exists)
 HOST_SHORT="$(hostname -s 2>/dev/null || hostname)"
 HOST_FILE="${ZSH_CONFIG_DIR}/hosts/${HOST_SHORT}.zsh"
 if [ -r "$HOST_FILE" ]; then

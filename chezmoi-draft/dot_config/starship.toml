@@ -1,0 +1,8 @@
+[ruby]
+disabled = true
+
+[directory]
+style = "bg:#2b3348 fg:#c0caf5"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncate_to_repo = false

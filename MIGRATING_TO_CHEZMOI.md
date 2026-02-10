@@ -120,8 +120,13 @@ Apply (still no scripts):
 ```sh
 chezmoi apply --exclude=scripts -v
 rm -f ~/.zlogin
+rm -f ~/.zshenv
 exec zsh -l
 ```
+
+Notes:
+
+- We intentionally keep `~/.zshenv` absent to avoid “global startup hooks” running for every zsh invocation (tools/automation included). If you need an env tweak for interactive shells, put it in `~/.config/zsh/env.zsh` instead.
 
 ## 4) Verify (plain zsh, no oh-my-zsh)
 
