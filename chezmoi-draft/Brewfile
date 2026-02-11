@@ -10,6 +10,7 @@ brew "chezmoi"
 # Shell UX (plain zsh)
 brew "starship"
 brew "zoxide"
+brew "zsh-history-substring-search"
 brew "tmux"
 
 # Common CLIs you actually use

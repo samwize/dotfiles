@@ -27,6 +27,23 @@ mkdir -p "$COMPDUMP_DIR" 2>/dev/null || true
 compinit -d "${COMPDUMP_DIR}/zcompdump"
 unset COMPDUMP_DIR
 
+# History substring search with ↑/↓ (matches anywhere in the command line)
+if [ -r /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+elif [ -r /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+fi
+
+if typeset -f history-substring-search-up >/dev/null 2>&1; then
+  for keymap in emacs viins; do
+    bindkey -M "$keymap" '^[[A' history-substring-search-up
+    bindkey -M "$keymap" '^[[B' history-substring-search-down
+    bindkey -M "$keymap" '^[OA' history-substring-search-up
+    bindkey -M "$keymap" '^[OB' history-substring-search-down
+  done
+  unset keymap
+fi
+
 # Prompt
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
@@ -36,4 +53,3 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
-

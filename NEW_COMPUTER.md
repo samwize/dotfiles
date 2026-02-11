@@ -36,7 +36,7 @@ fi
 ## 3) Install git + chezmoi
 
 ```sh
-brew install git chezmoi
+brew install git chezmoi zsh-history-substring-search
 ```
 
 ## 4) Bootstrap dotfiles (review before applying)
