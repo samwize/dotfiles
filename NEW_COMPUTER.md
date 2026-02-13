@@ -60,3 +60,19 @@ CHEZMOI_MACOS_DEFAULTS=1 ./.chezmoiscripts/run_onchange_10_macos_defaults.sh
 ```
 
 If you want to run scripts step-by-step during migration/refinement, follow `MIGRATING_TO_CHEZMOI.md`.
+
+## 6) Terminal font (Starship icons)
+
+Starship themes/modules often use Nerd Font glyphs. Install a Nerd Font and set it in your terminal:
+
+```sh
+brew install --cask font-meslo-lg-nerd-font
+```
+
+iTerm2: Preferences → Profiles → Text → Font → pick `MesloLGS Nerd Font`
+
+Quick glyph check (should not show tofu/boxes):
+
+```sh
+echo '  ❯'
+```
